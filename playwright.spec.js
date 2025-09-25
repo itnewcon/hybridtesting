@@ -6,7 +6,7 @@ module.exports = defineConfig({
   retries: 1,
   timeout: 30_000,
   workers: 3, // Parallel execution (default is # of cores)
-  reporter: [[ 'html', {open: 'always'}]],
+  reporter: [['list'],[ 'html', {open: 'always'}]],
   use: {
     baseURL: 'http://localhost:5500',
     headless: false,
@@ -16,6 +16,7 @@ module.exports = defineConfig({
     port: 5500,
     reuseExistingServer: !process.env.CI, // Reuse locally, start fresh in CI
     timeout: 120 * 1000, // Wait up to 2 minutes
+    exit: true, // ✅ Add this line**
   },
   projects: [
     {
