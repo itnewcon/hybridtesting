@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+</head>
+<body>
+  <h1 id="welcome">Welcome to the Dashboard</h1>
+  <p id="user">User: <span id="username"></span></p>
+  <p id="email">Email: <span id="email"></span></p>
+
+  <script>
+    // Simulating token-based session
+    const token = localStorage.getItem('auth_token');
+    if (!token) {
+      window.location.href = '/login.html';
+    } else {
+      // Simulate fetching user from token
+      const user = JSON.parse(atob(token.split('.')[1]));
+      document.getElementById('username').innerText = user.name;
+      document.getElementById('email').innerText = user.email;
+
+    }
+  </script>
+</body>
+</html>

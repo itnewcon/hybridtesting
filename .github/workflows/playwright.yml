@@ -1,0 +1,62 @@
+name: Playwright Tests
+
+
+
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+
+
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+
+
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+
+
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+
+
+
+      - name: Install dependencies
+        run: npm install
+
+
+      - name: Install Playwright browsers
+        run: |
+          chmod +x ./node_modules/.bin/playwright
+          npx playwright install
+
+
+      - name: Run Playwright Tests
+        run: |
+          chmod +x ./node_modules/.bin/playwright
+          npx playwright test
+
+
+
+
+      - name: Upload HTML report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+
+
