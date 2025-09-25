@@ -47,7 +47,7 @@ jobs:
       - name: Run Playwright Tests
         run: |
           chmod +x ./node_modules/.bin/playwright
-          npx playwright test
+          npx playwright test --reporter=html
 
 
 
