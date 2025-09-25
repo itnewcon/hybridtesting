@@ -6,7 +6,7 @@ module.exports = defineConfig({
   retries: 1,
   timeout: 30_000,
   workers: 3, // Parallel execution (default is # of cores)
-  reporter: [[ 'html', {open: 'html '}]],
+  reporter: [[ 'html', {open: 'html'}]],
   use: {
     baseURL: 'http://localhost:5500',
     headless: false,
